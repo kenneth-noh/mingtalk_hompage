@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>밍톡 - 새로운 인연</title>
+
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+
+body {
+    background:#fff;
+    overflow-x:hidden;
+}
+
+/* 🔥 배경 라이트 효과 */
+.bg-light {
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle, rgba(77,224,181,0.5), transparent 70%);
+    filter:blur(80px);
+    z-index:-1;
+}
+.bg-light.one {top:-100px; left:-100px;}
+.bg-light.two {bottom:-150px; right:-100px;}
+
+
+section {padding:120px 20px;}
+.container {max-width:1100px; margin:auto;}
+
+
+/* HERO */
+.hero {
+    position:relative;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#6FE2C0,#45DEB0, transparent 90%);
+    color:white;
+    overflow:hidden;
+}
+
+/* 🎥 영상 */
+.hero video {
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-2;
+}
+
+/* 이미지 fallback */
+.hero::before {
+    content:'';
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:url('hero.jpg') center/cover no-repeat;
+    z-index:-3;
+}
+
+/* 어두운 오버레이 */
+.hero::after {
+    content:'';
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(16,159,116,1);
+    z-index:-1;
+}
+
+.hero-content {
+    display:flex;
+    align-items:center;
+    gap:60px;
+    max-width:1100px;
+    padding:20px;
+}
+
+/* 텍스트 */
+.hero-text h1 {
+    font-size:42px;
+    margin-bottom:20px;
+}
+.hero-text p {
+    opacity:0.9;
+}
+
+/* 버튼 */
+.store-buttons {
+    margin-top:30px;
+    display:flex;
+    gap:15px;
+}
+
+.store-btn {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:white;
+    color:#000;
+    padding:12px 20px;
+    border-radius:12px;
+    font-weight:600;
+    font-size:14px;
+    transition:0.3s;
+}
+.store-btn:hover {
+    transform:translateY(-3px);
+}
+
+/* 앱 이미지 */
+.hero-image {
+    width:300px;
+    height:600px;
+    border-radius:40px;
+    background:#fff;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+
+/* 카드 hover */
+.card:hover {
+    transform:translateY(-6px);
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+
+.block {
+    display:flex;
+    align-items:center;
+    gap:60px;
+    margin-bottom:120px;
+}
+.block:nth-child(even) {flex-direction:row-reverse;}
+
+.text {
+    flex:1;
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 0.8s ease;
+}
+.text h2 {font-size:32px; margin-bottom:15px;}
+.text p {color:#666;}
+
+.image {
+    flex:1;
+    height:500px;
+    background:#f2f2f2;
+    border-radius:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#aaa;
+    font-size:14px;
+    border:1px solid #eee;
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 0.8s ease;
+}
+
+.show {
+    opacity:1 !important;
+    transform:translateY(0) !important;
+}
+
+.footer {
+    border-top: 1px dotted; 
+    border-color : #eee;
+    background: rgba(255, 255, 255, 0.4);
+    padding:40px 20px;
+    font-size:14px;
+    color:#666;
+}
+
+.footer-inner {
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+}
+
+/* 좌측 링크 */
+.footer-links a {
+    margin-right:15px;
+    color:#888;
+}
+
+/* 우측 회사 정보 */
+.footer-info {
+    text-align:right;
+    line-height:1.6;
+}
+
+/* 반응형 */
+@media (max-width:768px){
+    .footer-inner {
+        flex-direction:column;
+        text-align:center;
+    }
+    .footer-info {
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+<!-- 배경 효과 -->
+<div class="bg-light one"></div>
+<div class="bg-light two"></div>
+
+<section class="hero">
+
+    <!-- 🎥 영상 (없으면 주석 처리 가능) -->
+    <video autoplay muted loop playsinline>
+        <source src="hero.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-content">
+
+        <!-- 텍스트 -->
+        <div class="hero-text">
+            <h1>지금 당신은...<br> 밍톡으로 새로운 인연이 시작됩니다</h1>
+            <p>복잡한 매칭 없이 바로 대화를 시작해보세요</p>
+
+            <div class="store-buttons">
+                <a href="#" class="store-btn">
+                    🍎 App Store
+                </a>
+                <a href="#" class="store-btn">
+                    🤖 Google Play
+                </a>
+            </div>
+        </div>
+
+        <!-- 📱 앱 대표 이미지 -->
+        <div class="hero-image">
+            <!-- 여기 이미지 넣으면 됨 -->
+            <img src="app-main.png" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTENT -->
+<section class="container">
+
+    <!-- 탐색 -->
+    <div class="block">
+        <div class="text fade">
+            <h2>원하는 사람을 바로 찾기</h2>
+            <p>
+                실시간 · 인기 · 신규 · 가까운 사용자 탐색<br>
+                연령 필터로 나에게 맞는 인연 선택
+            </p>
+        </div>
+        <div class="image fade">
+            리스트 화면 (필터 / 카테고리 UI)
+        </div>
+    </div>
+
+    <!-- 채팅 -->
+    <div class="block">
+        <div class="text fade">
+            <h2>매칭 없이 바로 대화</h2>
+            <p>
+                기다림 없이 즉시 채팅 시작<br>
+                자연스럽게 이어지는 연결
+            </p>
+        </div>
+        <div class="image fade">
+            채팅 화면 UI
+        </div>
+    </div>
+
+    <!-- 음성 -->
+    <div class="block">
+        <div class="text fade">
+            <h2>음성으로 더 가까워지기</h2>
+            <p>
+                텍스트보다 진짜 감정 전달<br>
+                음성 메시지 기능 지원
+            </p>
+        </div>
+        <div class="image fade">
+            음성 메시지 UI
+        </div>
+    </div>
+
+    <!-- 선물 -->
+    <div class="block">
+        <div class="text fade">
+            <h2>간단한 호감 표현</h2>
+            <p>
+                앱 내 포인트로 선물하기<br>
+                부담 없이 마음 전달
+            </p>
+        </div>
+        <div class="image fade">
+            선물하기 UI
+        </div>
+    </div>
+
+    <!-- 출석 -->
+    <div class="block">
+        <div class="text fade">
+            <h2>매일 접속하면 보상</h2>
+            <p>
+                출석 체크로 포인트 지급<br>
+                꾸준한 활동 혜택 제공
+            </p>
+        </div>
+        <div class="image fade">
+            출석 체크 화면
+        </div>
+    </div>
+
+    <!-- 안전 -->
+    <div class="block">
+        <div class="text fade">
+            <h2>안전한 이용 환경</h2>
+            <p>
+                차단 및 신고 기능 제공<br>
+                쾌적한 커뮤니티 유지
+            </p>
+        </div>
+        <div class="image fade">
+            신고 / 차단 UI
+        </div>
+    </div>
+
+</section>
+
+<!-- CTA -->
+<section style="text-align:center; padding:120px 20px;">
+    <h2 style="font-size:32px; margin-bottom:20px;">지금 바로 시작하세요</h2>
+    <p style="color:#666;">가볍게, 빠르게, 새로운 인연</p>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+
+        <!-- 좌측 -->
+        <div class="footer-links">
+            <a href="#">이용약관</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">위치정보서비스약관</a>
+            <a href="#">청소년보호정책</a>
+        </div>
+
+        <!-- 우측 -->
+        <div class="footer-info">
+            주식회사 프리즘넥서스 | 대표이사 : 노정호 | 사업자등록번호 : 468-86-04093<br>
+            고객센터 : cs@pnexusai.com | 주소 : 서울특별시 강남구 강남대로 112길 47, 2층 643A호(논현동)<br>
+            Copyright © 2026 PrismNexus inc. All Rights Reserved
+        </div>
+
+    </div>
+</footer>
+<script>
+// 스크롤 애니메이션
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+},{threshold:0.2});
+
+document.querySelectorAll('.fade').forEach(el=>{
+    observer.observe(el);
+});
+</script>
+
+</body>
+</html>
